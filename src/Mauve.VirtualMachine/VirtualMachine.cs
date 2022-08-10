@@ -67,55 +67,253 @@ public class VirtualMachine
                     _stack.DropLongWord();
                     continue;
 
+                case Operation.AddI32:
+                {
+                    var right = _stack.PopShortWord().I32;
+                    var left = _stack.PopShortWord().I32;
+                    var result = left + right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.AddI64:
+                {
+                    var right = _stack.PopLongWord().I64;
+                    var left = _stack.PopLongWord().I64;
+                    var result = left + right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.AddF32:
+                {
+                    var right = _stack.PopShortWord().F32;
+                    var left = _stack.PopShortWord().F32;
+                    var result = left + right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.AddF64:
+                {
+                    var right = _stack.PopLongWord().F64;
+                    var left = _stack.PopLongWord().F64;
+                    var result = left + right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.SubI32:
+                {
+                    var right = _stack.PopShortWord().I32;
+                    var left = _stack.PopShortWord().I32;
+                    var result = left - right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.SubI64:
+                {
+                    var right = _stack.PopLongWord().I64;
+                    var left = _stack.PopLongWord().I64;
+                    var result = left - right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.SubF32:
+                {
+                    var right = _stack.PopShortWord().F32;
+                    var left = _stack.PopShortWord().F32;
+                    var result = left - right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.SubF64:
+                {
+                    var right = _stack.PopLongWord().F64;
+                    var left = _stack.PopLongWord().F64;
+                    var result = left - right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.MulI32:
+                {
+                    var right = _stack.PopShortWord().I32;
+                    var left = _stack.PopShortWord().I32;
+                    var result = left * right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.MulI64:
+                {
+                    var right = _stack.PopLongWord().I64;
+                    var left = _stack.PopLongWord().I64;
+                    var result = left * right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.MulF32:
+                {
+                    var right = _stack.PopShortWord().F32;
+                    var left = _stack.PopShortWord().F32;
+                    var result = left * right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.MulF64:
+                {
+                    var right = _stack.PopLongWord().F64;
+                    var left = _stack.PopLongWord().F64;
+                    var result = left * right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.DivI32:
+                {
+                    var right = _stack.PopShortWord().I32;
+                    var left = _stack.PopShortWord().I32;
+                    var result = left / right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.DivU32:
+                {
+                    var right = (uint)_stack.PopShortWord().I32;
+                    var left = (uint)_stack.PopShortWord().I32;
+                    var result = left / right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.DivI64:
+                {
+                    var right = _stack.PopLongWord().I64;
+                    var left = _stack.PopLongWord().I64;
+                    var result = left / right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.DivU64:
+                {
+                    var right = _stack.PopLongWord().U64;
+                    var left = _stack.PopLongWord().U64;
+                    var result = left / right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.DivF32:
+                {
+                    var right = _stack.PopShortWord().F32;
+                    var left = _stack.PopShortWord().F32;
+                    var result = left / right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.DivF64:
+                {
+                    var right = _stack.PopLongWord().F64;
+                    var left = _stack.PopLongWord().F64;
+                    var result = left / right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.RemI32:
+                {
+                    var right = _stack.PopShortWord().I32;
+                    var left = _stack.PopShortWord().I32;
+                    var result = left % right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.RemU32:
+                {
+                    var right = _stack.PopShortWord().U32;
+                    var left = _stack.PopShortWord().U32;
+                    var result = left % right;
+                    _stack.PushShortWord(result);
+                    continue;
+                }
+
+                case Operation.RemI64:
+                {
+                    var right = _stack.PopLongWord().I64;
+                    var left = _stack.PopLongWord().I64;
+                    var result = left % right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.RemU64:
+                {
+                    var right = _stack.PopLongWord().U64;
+                    var left = _stack.PopLongWord().U64;
+                    var result = left % right;
+                    _stack.PushLongWord(result);
+                    continue;
+                }
+
                 case Operation.PrintI32:
                 {
-                    var value = _stack.PopShortWord();
+                    var value = _stack.PopShortWord().I32;
                     Console.WriteLine(value);
                     continue;
                 }
 
                 case Operation.PrintU32:
                 {
-                    var value = (uint)_stack.PopShortWord();
+                    var value = _stack.PopShortWord().U32;
                     Console.WriteLine(value);
                     continue;
                 }
 
                 case Operation.PrintI64:
                 {
-                    var value = (uint)_stack.PopLongWord();
+                    var value = _stack.PopLongWord().U64;
                     Console.WriteLine(value);
                     continue;
                 }
 
                 case Operation.PrintU64:
                 {
-                    var value = (ulong)_stack.PopLongWord();
+                    var value = _stack.PopLongWord().U64;
                     Console.WriteLine(value);
                     continue;
                 }
 
                 case Operation.PrintF32:
                 {
-                    var value = BitConverter.ToSingle(BitConverter.GetBytes(_stack.PopShortWord()));
+                    var value = _stack.PopShortWord().F32;
                     Console.WriteLine(value);
                     continue;
                 }
 
                 case Operation.PrintF64:
                 {
-                    var value = BitConverter.ToDouble(BitConverter.GetBytes(_stack.PopLongWord()));
+                    var value = _stack.PopLongWord().F64;
                     Console.WriteLine(value);
                     continue;
-                }   
-                    
+                }
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(operation), operation, "Invalid operation code");
             }
         }
     }
 
-    private Operation FetchOperation(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
+    private static Operation FetchOperation(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
     {
         var operationCode = byteCode[instructionPointer];
         instructionPointer += sizeof(Operation);
@@ -124,7 +322,7 @@ public class VirtualMachine
         return operation;
     }
 
-    private int FetchShortWord(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
+    private static int FetchShortWord(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
     {
         var bytes = byteCode.Slice(instructionPointer, sizeof(int));
         instructionPointer += sizeof(int);
@@ -133,7 +331,7 @@ public class VirtualMachine
         return value;
     }
 
-    private long FetchLongWord(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
+    private static long FetchLongWord(ReadOnlySpan<byte> byteCode, ref int instructionPointer)
     {
         var bytes = byteCode.Slice(instructionPointer, sizeof(long));
         instructionPointer += sizeof(long);

@@ -8,7 +8,7 @@ public class StackMemoryBenchmarks
     private const int ShortWord = -1347856651;
     private const long LongWord = -8256785960430895956;
 
-    private StackMemory _stack;
+    private StackMemory _stack = null!;
 
     [IterationSetup]
     public void IterationSetup()

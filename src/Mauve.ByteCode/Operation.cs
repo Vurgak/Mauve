@@ -23,6 +23,33 @@ public enum Operation : byte
     /// </summary>
     Drop64,
     
+    AddI32,
+    AddI64,
+    AddF32,
+    AddF64,
+    
+    SubI32,
+    SubI64,
+    SubF32,
+    SubF64,
+    
+    MulI32,
+    MulI64,
+    MulF32,
+    MulF64,
+    
+    DivI32,
+    DivU32,
+    DivI64,
+    DivU64,
+    DivF32,
+    DivF64,
+    
+    RemI32,
+    RemU32,
+    RemI64,
+    RemU64,
+    
     // Temporary operations for debugging:
     PrintI32,
     PrintU32,
