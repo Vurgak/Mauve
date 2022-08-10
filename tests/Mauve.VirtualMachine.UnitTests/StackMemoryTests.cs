@@ -1,6 +1,6 @@
-namespace Mauve.VirtualMachine.Tests;
+namespace Mauve.VirtualMachine.UnitTests;
 
-public class VirtualMachineTests
+public class StackMemoryTests
 {
     private const int StackSize = 128;
     private readonly StackMemory _stack = new StackMemory(StackSize);

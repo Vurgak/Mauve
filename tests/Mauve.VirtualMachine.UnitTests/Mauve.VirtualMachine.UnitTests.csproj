@@ -22,6 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\Mauve.Compiler\Mauve.Compiler.csproj" />
       <ProjectReference Include="..\..\src\Mauve.VirtualMachine\Mauve.VirtualMachine.csproj" />
     </ItemGroup>
 
