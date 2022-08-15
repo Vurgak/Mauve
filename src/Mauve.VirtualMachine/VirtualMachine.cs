@@ -8,7 +8,7 @@ public class VirtualMachine
     /// <summary>
     ///     Program's heap memory.
     /// </summary>
-    private readonly byte[] _heap;
+    private readonly HeapMemory _heap;
 
     /// <summary>
     ///     Program's stack memory.
@@ -18,7 +18,7 @@ public class VirtualMachine
     public VirtualMachine(int stackSize, int heapSize)
     {
         _stack = new StackMemory(stackSize);
-        _heap = new byte[heapSize];
+        _heap = new HeapMemory(heapSize);
     }
 
     public void Execute(ReadOnlySpan<byte> byteCode)
@@ -262,6 +262,14 @@ public class VirtualMachine
                     var left = _stack.PopLongWord().U64;
                     var result = left % right;
                     _stack.PushLongWord(result);
+                    continue;
+                }
+
+                case Operation.Allocate:
+                {
+                    var size = FetchShortWord(byteCode, ref instructionPointer);
+                    var pointer = _heap.Allocate(size);
+                    _stack.PushShortWord(pointer);
                     continue;
                 }
 

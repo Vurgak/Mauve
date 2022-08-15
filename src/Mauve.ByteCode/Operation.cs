@@ -50,6 +50,8 @@ public enum Operation : byte
     RemI64,
     RemU64,
     
+    Allocate,
+    
     // Temporary operations for debugging:
     PrintI32,
     PrintU32,
