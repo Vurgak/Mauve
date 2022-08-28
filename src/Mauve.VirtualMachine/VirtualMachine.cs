@@ -273,6 +273,13 @@ public class VirtualMachine
                     continue;
                 }
 
+                case Operation.Jump:
+                {
+                    var address = FetchLongWord(byteCode, ref instructionPointer);
+                    instructionPointer = (int)address;
+                    continue;
+                }
+
                 case Operation.PrintI32:
                 {
                     var value = _stack.PopShortWord().I32;

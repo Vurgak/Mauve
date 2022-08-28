@@ -168,6 +168,12 @@ public class Compiler
         _generatedCode.Add((byte)Operation.RemU64);
     }
 
+    public void GenerateJump(long address)
+    {
+        _generatedCode.Add((byte)Operation.Jump);
+        GenerateConstantI64(address);
+    }
+    
     public void GeneratePrintI32()
     {
         _generatedCode.Add((byte)Operation.PrintI32);

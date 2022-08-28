@@ -52,6 +52,11 @@ public enum Operation : byte
     
     Allocate,
     
+    /// <summary>
+    /// Unconditional jump to the specified address.
+    /// </summary>
+    Jump,
+    
     // Temporary operations for debugging:
     PrintI32,
     PrintU32,
